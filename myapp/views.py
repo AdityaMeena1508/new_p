@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Musician
 
 # Create your views here.
@@ -22,6 +22,13 @@ def Registration_form(request):
         fname=request.POST['firstname']
         lname=request.POST['lastname']
         mus=Musician(last_name=lname,first_name=fname)
-        mus.save()
+        try:
+            mus.save()
+        except Exception as e:
+            print(e)
         mus = Musician.objects.all().order_by('first_name').values()
     return render(request, 'registration_form.html',{'key':'registration'})
+
+def save_registration_data(request):
+    
+    return redirect(request, 'registration_form.html')

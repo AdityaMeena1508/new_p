@@ -5,7 +5,7 @@ import uuid
 
 # Create your models here.
 class Musician(models.Model):
-    first_name = models.CharField(max_length=200, primary_key=True, unique=True, default=True)
+    first_name = models.CharField(max_length=200, primary_key=True)
     last_name = models.CharField(max_length=200, default=True)
     def __str__(self) -> str:
         
