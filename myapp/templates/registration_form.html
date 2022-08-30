@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <h1>Registration Form</h1>
+    <form action="registration_form" method="post"  >
+        
+        {% csrf_token %}
+    <input type="text" placeholder="enter first name" name="firstname"><br><br>
+
+ 
+    <input type="text" placeholder="enter last name" name="lastname"><br><br>
+    <button><input type="submit" name="Submit"></button></form>
+</body>
+{{key}}
+</html>
