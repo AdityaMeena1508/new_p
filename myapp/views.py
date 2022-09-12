@@ -1,3 +1,5 @@
+from doctest import REPORT_UDIFF
+from http.client import HTTPResponse    
 from django.shortcuts import render,redirect
 from .models import Musician
 
@@ -19,16 +21,30 @@ def Emp3(request):
 
 def Registration_form(request):
     if request.method=="POST":
-        fname=request.POST['firstname']
-        lname=request.POST['lastname']
+        fname=request.POST['fname']
+        lname=request.POST['lname']
         mus=Musician(last_name=lname,first_name=fname)
+        
         try:
             mus.save()
+
         except Exception as e:
             print(e)
-        mus = Musician.objects.all().order_by('first_name').values()
-    return render(request, 'registration_form.html',{'key':'registration'})
-
-def save_registration_data(request):
+    mydata = Musician.objects.all()
     
-    return redirect(request, 'registration_form.html')
+    return render(request,'list.html',{'mydata':mydata})
+        
+    # return render(request, 'list.html')
+def delete_data(request, id):
+    data = Musician.objects.filter(pk=id)
+    data.delete()
+    
+    return redirect("/registration_form")
+
+def update_data(request, id):
+    data=Musician.objects.get(pk=id)
+    breakpoint()
+    context={}
+    data.save()
+
+    return redirect('/registration_form',context)

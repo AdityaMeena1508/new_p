@@ -8,5 +8,9 @@ urlpatterns = [
     path('', views.Emp1 , name="emp"),
     path('about', views.Emp2, name='aboutus'),
     path('contactus',views.Emp3, name='contactus'),
-    path('registration_form', views.Registration_form, name='registration_form')
+    path('registration_form', views.Registration_form, name='registration_form'),
+    path('delete/<str:id>',views.delete_data,name='delete'),
+    path('update/<str:id>',views.update_data,name='update')
+    # path('list_data', views.save_registration_data, name='list_data'),
+    
 ]

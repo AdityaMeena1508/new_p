@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+<form action={% url 'registration_form' %}  method="post">
+    {% csrf_token %}
+
+    <label for="email"><b>First Name</b></label>
+    <input type="text" placeholder="Enter firstname" name="fname" id="firstname" required>
+
+    <label for="psw"><b>Last name</b></label>
+    <input type="text" placeholder="Enter last name" name="lname" id="lastname" required>
+    <button type="submit" class="registerbtn">Register</button>
+</form>
+
+    <table border="1">
+       
+            <tr>
+                <th>firstname</th>
+                <th>lastname</th>
+
+            </tr>
+            {% for mus in mydata %}
+            <tr>         
+                <td style="width: 200px; height: 100px;" >{{ mus.first_name }}</td>
+                <td  style="width: 200px; height: 100px;"  >{{ mus.last_name }}</td>
+                <td><a href="delete/{{mus.first_name}}">delete</a></td>
+                <td><a href="update/{{mus.first_name}}">Update</a></td>
+            </tr>
+            
+       
+        {% endfor %}
+    </table>
+
+</body>
+{{ key }}
+</html>
