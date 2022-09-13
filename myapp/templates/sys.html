@@ -1,0 +1,12 @@
+<form  method="post" action="{% url 'update' first_name=first_name.first_name %}">
+    {% csrf_token %}
+    
+    
+        first name
+        <input type="text" name="fname" value={{first_name.first_name}}>
+   
+        last name 
+        <input type="text" name="lname" value={{first_name.last_name}}>
+    <input type="submit" value="Update" >
+  
+</form>
