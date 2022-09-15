@@ -3,20 +3,13 @@ from multiprocessing import context
 from django.shortcuts import render,redirect
 from .models import Musician
 
-# Create your views here.
-
-# Create your views here.
 def Emp1(request):
-   
     return render(request, "thoughtwin.html")
 
 def Emp2(request):
-
-
     return render(request,'hello.html')
 
 def Emp3(request):
-
     return render (request, 'contactus.html')
 
 def Registration_form(request):
@@ -55,5 +48,9 @@ def update_data(request, first_name):
         data=Musician.objects.get(first_name = first_name)
         data.first_name = fname
         data.last_name = lname
-     
         data.save()  
+    #  if request.method=="POST":
+        # fname=request.POST['fname']
+        # lname=request.POST['lname']
+        # mus=Musician(last_name=lname,first_name = fname)
+        
