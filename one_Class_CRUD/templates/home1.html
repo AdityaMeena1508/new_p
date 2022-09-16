@@ -7,27 +7,27 @@
     <title>Welcome to my form</title>
 </head>
 <body>
-    <form action="{% url 'home' %}" method="post">
+    <form action="{% url 'crud' %}" method="post">
         {% csrf_token %}
-        {{form.as_p}}
+        {{ form.as_p }}
         <button type="submit"  value="Submit">Submit</button>
     </form>
     <table border="1">
        
         <tr>
             <th>name</th>
-            <th>age</th>
-            <th>gender</th>
+            <th>eid</th>
+            <th>eage</th>
 
         </tr>
-        {% for mus in data %}
+        {% for data in data %}
         <tr>         
-            <td style="width: 200px; height: 100px;" >{{ mus.name }}</td>
-            <td  style="width: 200px; height: 100px;"  >{{ mus.age }}</td>
-            <td  style="width: 200px; height: 100px;"  >{{ mus.gender }}</td>
+            <td style="width: 200px; height: 100px;" >{{ data.name }}</td>
+            <td  style="width: 200px; height: 100px;"  >{{ data.eid }}</td>
+            <td  style="width: 200px; height: 100px;"  >{{ data.eage }}</td>
+            <td><a href="{% url 'del' id=data.id %}">Delete</a></td>
+             <td><a href="{% url 'up' id=data.id %}">Update</a></td>
 
-            <td><a href="update?q={{mus.id}}">Edit</a></td>
-            <td><a href="{% url 'delete' id=mus.id %}" method="get" >Delete</a></td>
         </tr>
         
     
