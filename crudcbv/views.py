@@ -25,13 +25,13 @@ class Create(View):
 
 
 
-# class Update(View):
+class Update(View):
 
-#     def get(self, request, id): 
-#         data = User.objects.get(id=id)
-#         obj = UserForm(instance = , )
-#         print(data)
-#         return render(request,'update.html',{'id':data})
+    def get(self, request, id): 
+        data = User.objects.get(id=id)
+        obj = UserForm(instance =data, )
+        print(data)
+        return render(request,'update.html',{'id':data})
 
 
 
