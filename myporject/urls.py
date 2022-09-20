@@ -21,5 +21,6 @@ urlpatterns = [
     
     path('',include("myapp.urls") ),
     path('home/',include("crudcbv.urls")),
-    path('home1/', include("one_Class_CRUD.urls"))
+    path('home1/', include("one_Class_CRUD.urls")),
+    path('home2/',include("Generic_CRUD.urls"))
 ]

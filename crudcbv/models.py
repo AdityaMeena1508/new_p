@@ -12,3 +12,6 @@ class User(models.Model):
     name = models.CharField(max_length=20)
     age = models.IntegerField()
     gender = models.CharField(choices = gen, max_length=20)
+    def __str__(self) -> str:
+        return self.name
+        

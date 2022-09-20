@@ -9,11 +9,12 @@ from django.views import View
 class CrudData(View):
 
 
+    
     def dispatch(self, request, *args, **kwargs):
-        if request.method == 'GET':
+        if request.method == 'GET' :
             if request.path.endswith("up"):
                 return self.put(request, *args, **kwargs)
-            elif request.path.endswith("del"):
+            if request.path.endswith("del"):
                 return self.delete(request, *args, **kwargs)
             return self.get(request, *args, **kwargs)
         elif request.method == 'POST':
@@ -35,15 +36,31 @@ class CrudData(View):
             data.save()
         return redirect('/home1/crud')
     
-    def put(self, request, id, *args, **kwargs):
-        obj = get_object_or_404(Employee, id = id)
-        form=EmployeeForm(request.GET or None, instance=obj)
-        if request.method == "POST":
-            data = get_object_or_404(Employee, id=id)
-            if obj.is_valid():
-                obj.save()
-                return HttpResponseRedirect('/home1/crud/')
-        return render(request, 'update1.html', {"form":form}) 
+    def put(self, request, id):
+        if request.method == 'POST':
+            obj=get_object_or_404(Employee,id=id)
+            form=EmployeeForm(request.POST,instance=obj)
+            if form.is_valid():
+                form.save()
+            return HttpResponseRedirect('/home1/crud/')
+        
+        if request.method == 'GET':
+            obj=Employee.objects.get(id=id)
+            form=EmployeeForm(instance=obj)
+            return render(request,'update1.html',{'form':form})
+
+
+        # def put(self,request,id):
+        # if request.method == 'POST':
+        #     data11=get_object_or_404(Student,id=id)
+        #     data21=StudentForm(request.POST,instance=data11)
+        #     if data21.is_valid():
+        #         data21.save()
+        #     return HttpResponseRedirect('/CRUD3/home/')
+        # if request.method == 'GET':
+        #     data11=Student.objects.get(id=id)
+        #     data12=StudentForm(instance=data11)
+        #     return render(request,'UPD.html',{'form':data12})
 
     def delete(self, request, id):
         data = Employee.objects.get(id=id)

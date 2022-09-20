@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'crudcbv',
-    'one_Class_CRUD'
+    'one_Class_CRUD',
+    'Generic_CRUD'
 ]
 
 MIDDLEWARE = [

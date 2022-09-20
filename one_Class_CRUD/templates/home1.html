@@ -20,13 +20,13 @@
             <th>eage</th>
 
         </tr>
-        {% for data in data %}
+        {% for d in data %}
         <tr>         
-            <td style="width: 200px; height: 100px;" >{{ data.name }}</td>
-            <td  style="width: 200px; height: 100px;"  >{{ data.eid }}</td>
-            <td  style="width: 200px; height: 100px;"  >{{ data.eage }}</td>
-            <td><a href="{% url 'del' id=data.id %}">Delete</a></td>
-             <td><a href="{% url 'up' id=data.id %}">Update</a></td>
+            <td style="width: 200px; height: 100px;" >{{ d.name }}</td>
+            <td  style="width: 200px; height: 100px;"  >{{ d.eid }}</td>
+            <td  style="width: 200px; height: 100px;"  >{{ d.eage }}</td>
+            <td><a href="{% url 'del' id=d.id %}">Delete</a></td>
+             <td><a href="{% url 'up' id=d.id %}">Update</a></td>
 
         </tr>
         
