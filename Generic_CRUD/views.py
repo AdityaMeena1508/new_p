@@ -20,7 +20,3 @@ class StudentListView(ListView):
       return Student.objects.all()
 
 
-class StudentCreateView(CreateView):
-    model = StudentForm
-    template_name = 'Student_list.html'
-    fields =['name', 'subject', 'sid']

@@ -7,5 +7,5 @@ urlpatterns = [
     
    path ('<int:pk>/', views.StudentDetailView.as_view()),
    path('', views.StudentListView.as_view()),
-   path('',views.StudentCreateView.as_view())
+#    path('',views.StudentCreateView.as_view())
 ]

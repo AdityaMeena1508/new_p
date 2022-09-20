@@ -8,6 +8,8 @@ from django.views import View
 
 class CrudData(View):
 
+# To channge the route of the urls
+# run to get the data from the urls
 
     
     def dispatch(self, request, *args, **kwargs):
@@ -17,11 +19,14 @@ class CrudData(View):
             if request.path.endswith("del"):
                 return self.delete(request, *args, **kwargs)
             return self.get(request, *args, **kwargs)
+# to run on post the data
         elif request.method == 'POST':
             if request.path.endswith("up"):
                 return self.put(request, *args, **kwargs)
             return self.post(request, *args, **kwargs)
 
+            
+# To add the data in the database
     def get(self, request ,*args, **kwargs):
         data= Employee.objects.all()
         obj = EmployeeForm()
@@ -30,6 +35,8 @@ class CrudData(View):
         }
         return render (request, "home1.html",context)
 
+
+# To retrieve the data from the database
     def post(self, request, *args, **kwargs):
         data =EmployeeForm(request.POST)
         if data.is_valid():
@@ -62,6 +69,7 @@ class CrudData(View):
         #     data12=StudentForm(instance=data11)
         #     return render(request,'UPD.html',{'form':data12})
 
+# To delete the data from the db
     def delete(self, request, id):
         data = Employee.objects.get(id=id)
         data.delete()
